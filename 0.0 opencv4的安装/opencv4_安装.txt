@@ -1,0 +1,25 @@
+ubuntu/mac 下的编译安装
+
+官网： https://opencv.org
+手册： https://docs.opencv.org/4.5.1/
+
+
+# 下载源码包并解压
+# Download and unpack sources
+wget -O opencv.zip https://github.com/opencv/opencv/archive/master.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/master.zip
+
+unzip opencv.zip
+unzip opencv_contrib.zip
+
+# 创建build文件夹
+cd opencv-master && mkdir build 
+
+# 进行cmake的执行，生成makefile文件
+cmake -DCMAKE_BUILD_TYPE=Debug -DOPENCV_GENERATE_PKGCONFIG=ON -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-master/modules  .. 
+
+# 进行编译
+make -j32
+
+# 进行安装
+make install 
